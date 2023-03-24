@@ -1,6 +1,7 @@
 package indexer
 
 import (
+	"fmt"
 	"github.com/spf13/viper"
 	"strconv"
 	"testing"
@@ -18,6 +19,8 @@ func TestIndexAsset(t *testing.T) {
 	client := NewIndexerClient("indexer.test.autonomy.io", viper.GetString("indexer.api_token"))
 	contract := "KT1MeB8Wntrx4fjksZkCWUwmGDQTGs6DsMwp"
 	var tokenID int64 = 1
+
+	assetID := fmt.Sprintf("%s-%d", contract, tokenID)
 
 	request := IndexAssetRequest{
 		Source: "autonomy-postcard",
@@ -40,7 +43,7 @@ func TestIndexAsset(t *testing.T) {
 		},
 	}
 
-	err := client.IndexAsset(request, contract, tokenID)
+	err := client.IndexAsset(request, assetID)
 
 	assert.NoError(t, err)
 }
