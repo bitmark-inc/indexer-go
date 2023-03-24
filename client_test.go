@@ -22,7 +22,7 @@ func TestIndexAsset(t *testing.T) {
 
 	assetID := fmt.Sprintf("%s-%d", contract, tokenID)
 
-	request := IndexAssetRequest{
+	asset := IndexAssetRequest{
 		Source: "autonomy-postcard",
 		ProjectMetadata: ProjectMetadata{
 			Source:              "autonomy-postcard",
@@ -30,6 +30,9 @@ func TestIndexAsset(t *testing.T) {
 			ThumbnailURL:        "https://cdn.test.feralfileassets.com/thumbnails/5d7ef388-c2ea-417b-8288-6128be4e5dca/1669015364",
 			GalleryThumbnailURL: "https://cdn.test.feralfileassets.com/gallery-thumbnails/5d7ef388-c2ea-417b-8288-6128be4e5dca/1669015364",
 			PreviewURL:          "https://cdn.test.feralfileassets.com/previews/5d7ef388-c2ea-417b-8288-6128be4e5dca/1669015365/preview.jpeg",
+			ArtworkMetadata: map[string]interface{}{
+				"test": "test",
+			},
 		},
 		Tokens: []Token{
 			{
@@ -43,7 +46,7 @@ func TestIndexAsset(t *testing.T) {
 		},
 	}
 
-	err := client.IndexAsset(request, assetID)
+	err := client.IndexAsset(asset, assetID)
 
 	assert.NoError(t, err)
 }

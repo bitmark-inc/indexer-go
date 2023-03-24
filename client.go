@@ -18,11 +18,12 @@ type IndexAssetRequest struct {
 }
 
 type ProjectMetadata struct {
-	Source              string `json:"source"`
-	AssetID             string `json:"assetID"`
-	ThumbnailURL        string `json:"thumbnailURL"`
-	GalleryThumbnailURL string `json:"galleryThumbnailURL"`
-	PreviewURL          string `json:"previewURL"`
+	Source              string                 `json:"source"`
+	AssetID             string                 `json:"assetID"`
+	ThumbnailURL        string                 `json:"thumbnailURL"`
+	GalleryThumbnailURL string                 `json:"galleryThumbnailURL"`
+	PreviewURL          string                 `json:"previewURL"`
+	ArtworkMetadata     map[string]interface{} `json:"artworkMetadata"`
 }
 
 type Token struct {
