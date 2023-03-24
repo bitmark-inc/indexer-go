@@ -52,14 +52,14 @@ func NewIndexerClient(host string, APIToken string) *Client {
 }
 
 // IndexAsset updates an asset
-func (c *Client) IndexAsset(request IndexAssetRequest, contract string, tokenID int64) error {
+func (c *Client) IndexAsset(asset IndexAssetRequest, assetID string) error {
 	u := url.URL{
 		Scheme: "https",
 		Host:   c.host,
-		Path:   fmt.Sprintf("/asset/%s-%d", contract, tokenID),
+		Path:   fmt.Sprintf("/asset/%s", assetID),
 	}
 
-	body, err := json.Marshal(request)
+	body, err := json.Marshal(asset)
 	if err != nil {
 		return err
 	}
