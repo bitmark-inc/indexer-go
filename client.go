@@ -4,8 +4,6 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
-	"io"
-	"log"
 	"net/http"
 	"net/url"
 	"time"
@@ -135,14 +133,7 @@ func (c *Client) IndexAsset(asset IndexAssetRequest, assetID string) error {
 	if err != nil {
 		return err
 	}
-
-	// for test
-	bodyBytes, err := io.ReadAll(resp.Body)
-	if err != nil {
-		log.Fatal(err)
-	}
-	bodyString := string(bodyBytes)
-	fmt.Println(bodyString)
+	defer resp.Body.Close()
 
 	if resp.StatusCode != http.StatusOK {
 		return fmt.Errorf("indexer returned status code %d with message: %s", resp.StatusCode, resp.Body)
