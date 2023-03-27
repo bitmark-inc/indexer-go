@@ -36,22 +36,6 @@ type AssetAttributes struct {
 	Scrollable bool `json:"scrollable" bson:"scrollable"`
 }
 
-type Geolocation struct {
-	Longitude float64 `json:"lon"`
-	Latitude  float64 `json:"lat"`
-}
-
-type LocationInformation struct {
-	ClaimedLocation Geolocation `json:"claimedLocation"`
-	StampedLocation Geolocation `json:"stampedLocation,omitempty"`
-}
-
-type ArtworkMetadata struct {
-	LastOwner           string                `json:"lastOwner"`
-	IsStamped           bool                  `json:"isStamped"`
-	LocationInformation []LocationInformation `json:"locationInformation"`
-}
-
 type Medium string
 
 type ProjectMetadata struct {
@@ -79,7 +63,7 @@ type ProjectMetadata struct {
 	Attributes *AssetAttributes `json:"attributes,omitempty" bson:"attributes,omitempty"`
 
 	// artwork metadata from source. currently on for Feral File
-	ArtworkMetadata ArtworkMetadata `json:"artworkMetadata" structs:"artworkMetadata" bson:"artworkMetadata"`
+	ArtworkMetadata map[string]interface{} `json:"artworkMetadata" structs:"artworkMetadata" bson:"artworkMetadata"`
 
 	// Operation attributes
 	LastUpdatedAt time.Time `json:"lastUpdatedAt" structs:"lastUpdatedAt" bson:"lastUpdatedAt"`
@@ -165,11 +149,6 @@ func (c *Client) IndexAsset(asset IndexAssetRequest, assetID string) error {
 	}
 
 	return nil
-}
-
-type Test struct {
-	ID         string `json:"id"`
-	Blockchain string `json:"blockchain"`
 }
 
 func (c *Client) GetAssetInfo(tokenID string) ([]AssetInfo, error) {

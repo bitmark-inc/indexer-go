@@ -31,28 +31,18 @@ func TestIndexAsset(t *testing.T) {
 			ThumbnailURL:        "https://cdn.test.feralfileassets.com/thumbnails/5d7ef388-c2ea-417b-8288-6128be4e5dca/1669015364",
 			GalleryThumbnailURL: "https://cdn.test.feralfileassets.com/gallery-thumbnails/5d7ef388-c2ea-417b-8288-6128be4e5dca/1669015364",
 			PreviewURL:          "https://cdn.test.feralfileassets.com/previews/5d7ef388-c2ea-417b-8288-6128be4e5dca/1669015365/preview.jpeg",
-			ArtworkMetadata: ArtworkMetadata{
-				LastOwner: "this is the last owner",
-				IsStamped: true,
-				LocationInformation: []LocationInformation{
+			ArtworkMetadata: map[string]interface{}{
+				"lastOwner": "this is the last owner",
+				"isStamped": true,
+				"locationInformation": []map[string]interface{}{
 					{
-						ClaimedLocation: Geolocation{
-							Longitude: 12.34,
-							Latitude:  56.78,
+						"claimedLocation": map[string]interface{}{
+							"longitude": 12.34,
+							"latitude":  56.78,
 						},
-						StampedLocation: Geolocation{
-							Longitude: 12.34,
-							Latitude:  56.78,
-						},
-					},
-					{
-						ClaimedLocation: Geolocation{
-							Longitude: 123.34,
-							Latitude:  456.78,
-						},
-						StampedLocation: Geolocation{
-							Longitude: 112.34,
-							Latitude:  56.78,
+						"stampedLocation": map[string]interface{}{
+							"longitude": 12.34,
+							"latitude":  -100,
 						},
 					},
 				},
