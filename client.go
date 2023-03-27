@@ -102,6 +102,7 @@ type Token struct {
 	AssetID         string    `json:"assetID"`
 	IndexID         string    `json:"indexID"`
 	Balance         int64     `json:"balance"`
+	Source          string    `json:"source"`
 }
 
 type NFTQuery struct {
