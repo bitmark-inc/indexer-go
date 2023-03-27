@@ -43,7 +43,7 @@ type Geolocation struct {
 
 type LocationInformation struct {
 	ClaimedLocation Geolocation `json:"claimedLocation"`
-	StampedLocation Geolocation `json:"stampedLocation"`
+	StampedLocation Geolocation `json:"stampedLocation,omitempty"`
 }
 
 type ArtworkMetadata struct {
