@@ -15,7 +15,7 @@ import (
 
 // TestIndexAsset is a test function for IndexAsset
 func TestIndexAsset(t *testing.T) {
-	config.LoadConfig("AUTONOMY_POSTCARD")
+	config.LoadConfig("NFT_INDEXER")
 	var client = NewIndexerClient("indexer.test.autonomy.io", viper.GetString("indexer.api_token"))
 
 	contract := "KT1MeB8Wntrx4fjksZkCWUwmGDQTGs6DsMwp"
@@ -79,7 +79,7 @@ func TestIndexAsset(t *testing.T) {
 }
 
 func TestGetAssetInfo(t *testing.T) {
-	config.LoadConfig("AUTONOMY_POSTCARD")
+	config.LoadConfig("NFT_INDEXER")
 	var client = NewIndexerClient("indexer.test.autonomy.io", viper.GetString("indexer.api_token"))
 
 	contract := "KT1MeB8Wntrx4fjksZkCWUwmGDQTGs6DsMwp"
